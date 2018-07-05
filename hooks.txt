@@ -1,0 +1,20 @@
+string[] splits = this.chatMessage.Split(' ');
+	foreach (KeyValuePair<string, Action<string[], Menucontroller>> command in GSOB.GSOB.Commands)
+        {
+        	if (splits[0].Equals(command.Key))
+        	{
+                	command.Value.Invoke(splits, this);
+                        this.lastChatMessage = this.chatMessage;
+                        this.chatMessage = string.Empty;
+                        GUI.FocusControl(null);
+                        return;
+                }
+        }
+        if (this.chatMessage.StartsWith("@"))
+        {
+        	return;
+        }
+
+GSOB.UpdateHook.Update(this);
+
+GSOB.GSOB.Start(this);
