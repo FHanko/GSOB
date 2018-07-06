@@ -111,6 +111,16 @@ namespace GSOB
                 Player.transform.position.y,
                 Player.transform.position.z
                 );
+            Targets.Waypoint waypoint = new Targets.Waypoint(wp);
+            waypoint.MaxTickTime = 0f;
+            if (param.Length > 2)
+            {
+                float amount = 0f;
+                if (float.TryParse(param[1], out amount))
+                {
+                    waypoint.MaxTickTime = amount;
+                }
+            }
             waypoints.Push(new Targets.Waypoint(wp));
             mc.sendChatMessage("Waypoint added");
         }

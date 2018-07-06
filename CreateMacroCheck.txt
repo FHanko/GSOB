@@ -1,0 +1,13 @@
+public void CreateMacroCheck(string data)
+	{
+		this.window_macroCheck.answers.Clear();
+		foreach (string value in data.Split(new char[]
+		{
+			','
+		}))
+		{
+			this.window_macroCheck.answers.Add(Convert.ToInt32(value));
+		}
+		this.window_macroCheck.question = "Which one of the following items is " + ItemController.instance.getBasicItem(this.window_macroCheck.answers[0]).itemName + "?";
+        GSOB.QOL.CaptchaSolve.SolveFor(this.window_macroCheck.answers[0]);
+    }

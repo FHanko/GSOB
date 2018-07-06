@@ -1,0 +1,21 @@
+private void DrawMacroCheckNotification()
+	{
+		if (this.macroCheckAvailable)
+		{
+			this.macroCheckNotification_currentPos = Mathf.Lerp(this.macroCheckNotification_currentPos, 250f, 5f * Time.deltaTime);
+		}
+		else
+		{
+			this.macroCheckNotification_currentPos = Mathf.Lerp(this.macroCheckNotification_currentPos, 0f, 5f * Time.deltaTime);
+		}
+		GUI.color = Color.red;
+		GUI.DrawTexture(new Rect(-250f + this.macroCheckNotification_currentPos, (float)(Screen.height / 2 - 75), 250f, 150f), this.getOtherIcon(35));
+		GUI.color = Color.white;
+		if (this.macroCheckAvailable)
+		{
+			this.drawGUITextWhiteCenter(-250f + this.macroCheckNotification_currentPos + 15f, (float)(Screen.height / 2 - 75 + 15), "Macro check available - click here to show.\nTime left: " + (int)this.macroCheckNotification_Timer, Color.white, 220, 120);
+Scr_RPCSender.instance.RequestMacroCheck();
+        this.macroCheckAvailable = false;        
+}
+        
+    }

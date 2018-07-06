@@ -47,8 +47,16 @@ namespace GSOB.Targets
                 {
                     Forward = new Stack<Waypoint>(Back.Reverse());
                 }
-                Back.Push(current);
-                current = Forward.Pop();
+                if (current.TickTime < 1)
+                {
+                    Back.Push(current);
+                    current = Forward.Pop();
+                    Back.Peek().TickTime = Back.Peek().MaxTickTime;
+                }
+                else
+                {
+                    current.TickTime--;
+                }
             }
         }
     }

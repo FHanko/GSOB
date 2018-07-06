@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace GSOB.Targets
 {
-    class Waypoint
+    class Waypoint : MonoBehaviour
     {
         public Vector3 Goal;
 
@@ -14,5 +15,8 @@ namespace GSOB.Targets
         {
             Goal = goal;
         }
+
+        public float TickTime = 0f;
+        public float MaxTickTime = 0f;
     }
 }
